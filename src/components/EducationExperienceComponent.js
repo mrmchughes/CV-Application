@@ -6,7 +6,12 @@ class GeneralInfo extends Component {
 
     this.state = {
       isEditing: true,
-      generalInfo: { firstName: "", lastName: "", email: "", phoneNumber: "" },
+      educationalExperience: {
+        schoolName: "",
+        fieldOfStudy: "",
+        fromDate: "",
+        toDate: "",
+      },
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
@@ -15,8 +20,8 @@ class GeneralInfo extends Component {
 
   handleInputChange = (e) => {
     this.setState((prevState) => ({
-      generalInfo: {
-        ...prevState.generalInfo,
+      educationalExperience: {
+        ...prevState.educationalExperience,
         [e.target.name]: e.target.value,
       },
     }));
@@ -24,7 +29,6 @@ class GeneralInfo extends Component {
 
   handleSave = (e) => {
     e.preventDefault();
-
     this.setState({ isEditing: false });
   };
 
@@ -34,23 +38,24 @@ class GeneralInfo extends Component {
   };
 
   render() {
-    const generalInfo = this.state.generalInfo;
+    const educationalExperience = this.state.educationalExperience;
     const isEditing = this.state.isEditing;
 
     return (
       <div>
         <p>General Information </p>
+
         <div>
           {isEditing ? (
             <form>
               <div>
                 <label>
-                  First Name:
+                  School Name:
                   <input
-                    name="firstName"
+                    name="schoolName"
                     type="text"
-                    placeholder="First name"
-                    value={generalInfo.firstName}
+                    placeholder="School name"
+                    value={educationalExperience.schoolName}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -58,12 +63,12 @@ class GeneralInfo extends Component {
 
               <div>
                 <label>
-                  Last Name:
+                  Field of Study:
                   <input
-                    name="lastName"
+                    name="fieldOfStudy"
                     type="text"
-                    placeholder="Last name"
-                    value={generalInfo.lastName}
+                    placeholder="Field of Study"
+                    value={educationalExperience.fieldOfStudy}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -71,12 +76,12 @@ class GeneralInfo extends Component {
 
               <div>
                 <label>
-                  Email:
+                  From Date:
                   <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    value={generalInfo.email}
+                    name="fromDate"
+                    type="text"
+                    placeholder="From Date"
+                    value={educationalExperience.fromDate}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -84,12 +89,12 @@ class GeneralInfo extends Component {
 
               <div>
                 <label>
-                  Phone Number:
+                  To Date:
                   <input
-                    name="phoneNumber"
+                    name="toDate"
                     type="text"
-                    placeholder="Phone Number:"
-                    value={generalInfo.phoneNumber}
+                    placeholder="To Date:"
+                    value={educationalExperience.toDate}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -101,10 +106,10 @@ class GeneralInfo extends Component {
             </form>
           ) : (
             <div>
-              <p>First Name: {generalInfo.firstName}</p>
-              <p>Last Name: {generalInfo.lastName}</p>
-              <p>Email: {generalInfo.email}</p>
-              <p>Phone Number: {generalInfo.phoneNumber}</p>
+              <p>School Name: {educationalExperience.schoolName}</p>
+              <p>Field of Study: {educationalExperience.fieldOfStudy}</p>
+              <p>To Date: {educationalExperience.toDate}</p>
+              <p>From Date: {educationalExperience.fromDate}</p>
               <div>
                 <input type="button" value="Edit" onClick={this.handleEdit} />
               </div>
