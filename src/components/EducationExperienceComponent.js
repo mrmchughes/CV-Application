@@ -43,8 +43,6 @@ class GeneralInfo extends Component {
 
     return (
       <div>
-        <p>General Information </p>
-
         <div>
           {isEditing ? (
             <form>
