@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import GeneralInfo from "./components/GeneralInfo";
-import EducationalExperience from "./components/EducationalExperience";
-import JobExperience from "./components/JobExperience";
+import EducationalExperiences from "./components/EducationalExperiences";
+import JobExperiences from "./components/JobExperiences";
+
+import "./styles/app.css";
+import "./styles/component.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="appDiv">
         <GeneralInfo />
-        <EducationalExperience />
-        <JobExperience />
+        <EducationalExperiences />
+        <JobExperiences />
       </div>
     );
   }

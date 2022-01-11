@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 
-class EducationalExperience extends Component {
+class ProfessionalExperience extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isEditing: true,
-      educationalExperience: {
-        schoolName: "",
-        fieldOfStudy: "",
+      professionalExperience: {
+        companyName: "",
+        positionTitle: "",
         fromDate: "",
         toDate: "",
+        mainTasks: "",
       },
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -20,8 +21,8 @@ class EducationalExperience extends Component {
 
   handleInputChange = (e) => {
     this.setState((prevState) => ({
-      educationalExperience: {
-        ...prevState.educationalExperience,
+      professionalExperience: {
+        ...prevState.professionalExperience,
         [e.target.name]: e.target.value,
       },
     }));
@@ -38,7 +39,7 @@ class EducationalExperience extends Component {
   };
 
   render() {
-    const educationalExperience = this.state.educationalExperience;
+    const professionalExperience = this.state.professionalExperience;
     const isEditing = this.state.isEditing;
 
     return (
@@ -48,12 +49,12 @@ class EducationalExperience extends Component {
             <form>
               <div>
                 <label>
-                  School Name:
+                  Company Name:
                   <input
-                    name="schoolName"
+                    name="companyName"
                     type="text"
-                    placeholder="School name"
-                    value={educationalExperience.schoolName}
+                    placeholder="Company name"
+                    value={professionalExperience.companyName}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -61,12 +62,12 @@ class EducationalExperience extends Component {
 
               <div>
                 <label>
-                  Field of Study:
+                  Position Title:
                   <input
-                    name="fieldOfStudy"
+                    name="positionTitle"
                     type="text"
-                    placeholder="Field of Study"
-                    value={educationalExperience.fieldOfStudy}
+                    placeholder="Position Title"
+                    value={professionalExperience.positionTitle}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -79,7 +80,7 @@ class EducationalExperience extends Component {
                     name="fromDate"
                     type="text"
                     placeholder="From Date"
-                    value={educationalExperience.fromDate}
+                    value={professionalExperience.fromDate}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -92,7 +93,20 @@ class EducationalExperience extends Component {
                     name="toDate"
                     type="text"
                     placeholder="To Date:"
-                    value={educationalExperience.toDate}
+                    value={professionalExperience.toDate}
+                    onChange={this.handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  Main Tasks:
+                  <input
+                    name="mainTasks"
+                    type="textarea"
+                    placeholder="Main Tasks:"
+                    value={professionalExperience.mainTasks}
                     onChange={this.handleInputChange}
                   />
                 </label>
@@ -104,10 +118,11 @@ class EducationalExperience extends Component {
             </form>
           ) : (
             <div>
-              <p>School Name: {educationalExperience.schoolName}</p>
-              <p>Field of Study: {educationalExperience.fieldOfStudy}</p>
-              <p>From Date: {educationalExperience.fromDate}</p>
-              <p>To Date: {educationalExperience.toDate}</p>
+              <p>Company Name: {professionalExperience.companyName}</p>
+              <p>Position Title: {professionalExperience.positionTitle}</p>
+              <p>From Date: {professionalExperience.fromDate}</p>
+              <p>To Date: {professionalExperience.toDate}</p>
+              <p>Main Tasks: {professionalExperience.mainTasks}</p>
               <div>
                 <input type="button" value="Edit" onClick={this.handleEdit} />
               </div>
@@ -119,4 +134,4 @@ class EducationalExperience extends Component {
   }
 }
 
-export default EducationalExperience;
+export default ProfessionalExperience;

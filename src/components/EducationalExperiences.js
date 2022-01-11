@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
-
 import EducationExperienceComponent from "./EducationExperienceComponent";
 
-class EducationalExperience extends Component {
+class EducationalExperiences extends Component {
   constructor(props) {
     super(props);
 
@@ -24,19 +23,32 @@ class EducationalExperience extends Component {
     });
   };
 
+  handleDelete(experience) {
+    this.setState((prevState) => ({
+      educationalExperiences: prevState.educationalExperiences.filter(
+        (el) => el !== experience
+      ),
+    }));
+  }
+
   render() {
     const educationalExperiences = this.state.educationalExperiences;
 
     return (
-      <div>
-        <p>Educational Experiences</p>
+      <div className="experiencesDiv">
+        <p>Educational Experience</p>
         <input type="button" value="Add" onClick={this.handleAdd} />
 
         <ul>
           {educationalExperiences.map((experience) => {
             return (
-              <li key={experience.id}>
+              <li key={experience.id} className="experienceItem">
                 <EducationExperienceComponent />
+                <input
+                  type="button"
+                  value="Delete"
+                  onClick={this.handleDelete.bind(this, experience)}
+                />
               </li>
             );
           })}
@@ -46,4 +58,4 @@ class EducationalExperience extends Component {
   }
 }
 
-export default EducationalExperience;
+export default EducationalExperiences;

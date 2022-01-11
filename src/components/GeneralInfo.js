@@ -38,7 +38,7 @@ class GeneralInfo extends Component {
     const isEditing = this.state.isEditing;
 
     return (
-      <div>
+      <div className="containerDiv">
         <p>General Information </p>
         <div>
           {isEditing ? (
