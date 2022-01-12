@@ -1,33 +1,54 @@
 .experiencesDiv {
   display: flex;
   justify-content: center;
-  font-size: 1.25rem;
-  align-items: center;
+  flex-direction: column;
 }
 
 .experienceItem {
-  margin: 10px;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.displayP {
+  font-size: 1.25rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 5px;
-  border-top: 2.5px solid #07a0c3;
+  text-decoration: underline;
+  text-decoration-color: #242423;
+  text-decoration-thickness: 2.25px;
+  text-underline-position: under;
+  margin: 5px;
 }
 
 ul > li {
   list-style-type: none;
 }
 
-input[type="button"] {
-  background-color: #a4adb6;
-  border: 1px solid black;
-  margin: 5px;
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+.experienceButton {
+  background-color: #f5cb5c;
+  border: 1px solid #242423;
+  border-radius: 8px;
+  margin-top: 5px;
   color: black;
   text-align: center;
   padding: 5px;
+  display: flex;
 }
 
-input[type="button"]:hover {
+.experienceButton:hover {
   box-shadow: 0 0.5em 0.5em -0.4em #07a0c3;
   transform: translateY(-0.25em);
   cursor: pointer;

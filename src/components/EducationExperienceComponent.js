@@ -99,7 +99,12 @@ class EducationalExperience extends Component {
               </div>
 
               <div>
-                <input type="button" value="Save" onClick={this.handleSave} />
+                <input
+                  type="button"
+                  value="Save"
+                  className="experienceButton"
+                  onClick={this.handleSave}
+                />
               </div>
             </form>
           ) : (
@@ -109,7 +114,12 @@ class EducationalExperience extends Component {
               <p>From Date: {educationalExperience.fromDate}</p>
               <p>To Date: {educationalExperience.toDate}</p>
               <div>
-                <input type="button" value="Edit" onClick={this.handleEdit} />
+                <input
+                  type="button"
+                  value="Edit"
+                  className="experienceButton"
+                  onClick={this.handleEdit}
+                />
               </div>
             </div>
           )}

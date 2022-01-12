@@ -36,8 +36,13 @@ class EducationalExperiences extends Component {
 
     return (
       <div className="experiencesDiv">
-        <p>Educational Experience</p>
-        <input type="button" value="Add" onClick={this.handleAdd} />
+        <p className="displayP">Educational Experience</p>
+        <input
+          type="button"
+          value="Add"
+          className="experienceButton"
+          onClick={this.handleAdd}
+        />
 
         <ul>
           {educationalExperiences.map((experience) => {
@@ -47,6 +52,7 @@ class EducationalExperiences extends Component {
                 <input
                   type="button"
                   value="Delete"
+                  className="experienceButton"
                   onClick={this.handleDelete.bind(this, experience)}
                 />
               </li>

@@ -33,18 +33,24 @@ class JobExperiences extends Component {
     const jobExperiences = this.state.jobExperiences;
 
     return (
-      <div className="containerDiv">
-        <p>Professional Experience</p>
-        <input type="button" value="Add" onClick={this.handleAdd} />
+      <div className="experiencesDiv">
+        <p className="displayP">Professional Experience</p>
+        <input
+          type="button"
+          value="Add"
+          className="experienceButton"
+          onClick={this.handleAdd}
+        />
 
         <ul>
           {jobExperiences.map((experience) => {
             return (
-              <li key={experience.id}>
+              <li key={experience.id} className="experienceItem">
                 <JobExperienceComponent />
                 <input
                   type="button"
                   value="Delete"
+                  className="experienceButton"
                   onClick={this.handleDelete.bind(this, experience)}
                 />
               </li>

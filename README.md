@@ -1,12 +1,13 @@
 # CV Application
-This is my implementation of The Odin Project's CV Application project. 
 
-# Motivation
-I created this project as part of The Odin Project's React curriculum. It was a very excited milestone for me to reach, as this is the first major React project I have done.
+This is my implementation of The Odin Project's CV Application project.
 
-# Tech/framework used 
-This project utilized: HTML/CSS | React | Git 
+I developed this React app as part of [The Odin Project's](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/cv-application) Fullstack curriculum. It was an exciting milestone to reach, as this was the first major React app I have done.
+
+# Tech/framework used
+
+This project utilized: HTML/CSS | React | Git
 
 # Features
-Developed an application that allows for users to input their information, and with the user's information, dynamically populates a CV.
 
+Developed an application for users to input their information, and using the user's information, dynamically populates a CV.

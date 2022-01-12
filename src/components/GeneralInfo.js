@@ -38,9 +38,9 @@ class GeneralInfo extends Component {
     const isEditing = this.state.isEditing;
 
     return (
-      <div className="containerDiv">
-        <p>General Information </p>
-        <div>
+      <div className="experiencesDiv">
+        <p className="displayP">General Information </p>
+        <div className="experienceItem">
           {isEditing ? (
             <form>
               <div>
@@ -96,7 +96,12 @@ class GeneralInfo extends Component {
               </div>
 
               <div>
-                <input type="button" value="Save" onClick={this.handleSave} />
+                <input
+                  type="button"
+                  value="Save"
+                  className="experienceButton"
+                  onClick={this.handleSave}
+                />
               </div>
             </form>
           ) : (
@@ -106,7 +111,12 @@ class GeneralInfo extends Component {
               <p>Email: {generalInfo.email}</p>
               <p>Phone Number: {generalInfo.phoneNumber}</p>
               <div>
-                <input type="button" value="Edit" onClick={this.handleEdit} />
+                <input
+                  type="button"
+                  value="Edit"
+                  className="experienceButton"
+                  onClick={this.handleEdit}
+                />
               </div>
             </div>
           )}

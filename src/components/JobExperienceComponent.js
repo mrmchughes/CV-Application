@@ -102,9 +102,8 @@ class ProfessionalExperience extends Component {
               <div>
                 <label>
                   Main Tasks:
-                  <input
+                  <textarea
                     name="mainTasks"
-                    type="textarea"
                     placeholder="Main Tasks:"
                     value={professionalExperience.mainTasks}
                     onChange={this.handleInputChange}
@@ -113,7 +112,12 @@ class ProfessionalExperience extends Component {
               </div>
 
               <div>
-                <input type="button" value="Save" onClick={this.handleSave} />
+                <input
+                  type="button"
+                  value="Save"
+                  className="experienceButton"
+                  onClick={this.handleSave}
+                />
               </div>
             </form>
           ) : (
@@ -124,7 +128,12 @@ class ProfessionalExperience extends Component {
               <p>To Date: {professionalExperience.toDate}</p>
               <p>Main Tasks: {professionalExperience.mainTasks}</p>
               <div>
-                <input type="button" value="Edit" onClick={this.handleEdit} />
+                <input
+                  type="button"
+                  value="Edit"
+                  className="experienceButton"
+                  onClick={this.handleEdit}
+                />
               </div>
             </div>
           )}
