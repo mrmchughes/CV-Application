@@ -1,129 +1,125 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class GeneralInfo extends Component {
-  constructor(props) {
-    super(props);
+function GeneralInfo() {
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    isEditing: true,
+  });
 
-    this.state = {
-      isEditing: true,
-      generalInfo: { firstName: "", lastName: "", email: "", phoneNumber: "" },
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
-
-  handleInputChange = (e) => {
-    this.setState((prevState) => ({
-      generalInfo: {
-        ...prevState.generalInfo,
-        [e.target.name]: e.target.value,
-      },
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
-  handleSave = (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
 
-    this.setState({ isEditing: false });
+    setState((prevState) => ({
+      ...prevState,
+      isEditing: false,
+    }));
   };
 
-  handleEdit = (e) => {
+  const handleEdit = (e) => {
     e.preventDefault();
-    this.setState({ isEditing: true });
+    setState((prevState) => ({
+      ...prevState,
+      isEditing: true,
+    }));
   };
 
-  render() {
-    const generalInfo = this.state.generalInfo;
-    const isEditing = this.state.isEditing;
-
-    return (
-      <div className="experiencesDiv">
-        <p className="displayP">General Information </p>
-        <div className="experienceItem">
-          {isEditing ? (
-            <form>
-              <div>
-                <label>
-                  First Name:
-                  <input
-                    name="firstName"
-                    type="text"
-                    placeholder="First name"
-                    value={generalInfo.firstName}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Last Name:
-                  <input
-                    name="lastName"
-                    type="text"
-                    placeholder="Last name"
-                    value={generalInfo.lastName}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Email:
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    value={generalInfo.email}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Phone Number:
-                  <input
-                    name="phoneNumber"
-                    type="text"
-                    placeholder="Phone Number:"
-                    value={generalInfo.phoneNumber}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <input
-                  type="button"
-                  value="Save"
-                  className="experienceButton"
-                  onClick={this.handleSave}
-                />
-              </div>
-            </form>
-          ) : (
+  return (
+    <div className="experiencesDiv">
+      <p className="displayP">General Information </p>
+      <div className="experienceItem">
+        {state.isEditing ? (
+          <form>
             <div>
-              <p>First Name: {generalInfo.firstName}</p>
-              <p>Last Name: {generalInfo.lastName}</p>
-              <p>Email: {generalInfo.email}</p>
-              <p>Phone Number: {generalInfo.phoneNumber}</p>
-              <div>
+              <label>
+                First Name:
                 <input
-                  type="button"
-                  value="Edit"
-                  className="experienceButton"
-                  onClick={this.handleEdit}
+                  name="firstName"
+                  type="text"
+                  placeholder="First name"
+                  value={state.firstName}
+                  onChange={handleInputChange}
                 />
-              </div>
+              </label>
             </div>
-          )}
-        </div>
+
+            <div>
+              <label>
+                Last Name:
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Last name"
+                  value={state.lastName}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Email:
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={state.email}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Phone Number:
+                <input
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="Phone Number:"
+                  value={state.phoneNumber}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <input
+                type="button"
+                value="Save"
+                className="experienceButton"
+                onClick={handleSave}
+              />
+            </div>
+          </form>
+        ) : (
+          <div>
+            <p>First Name: {state.firstName}</p>
+            <p>Last Name: {state.lastName}</p>
+            <p>Email: {state.email}</p>
+            <p>Phone Number: {state.phoneNumber}</p>
+            <div>
+              <input
+                type="button"
+                value="Edit"
+                className="experienceButton"
+                onClick={handleEdit}
+              />
+            </div>
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default GeneralInfo;

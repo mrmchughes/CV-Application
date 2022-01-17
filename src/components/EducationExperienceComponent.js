@@ -1,132 +1,124 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class EducationalExperience extends Component {
-  constructor(props) {
-    super(props);
+function EducationalExperience() {
+  const [state, setState] = useState({
+    schoolName: "",
+    fieldOfStudy: "",
+    fromDate: "",
+    toDate: "",
+    isEditing: true,
+  });
 
-    this.state = {
-      isEditing: true,
-      educationalExperience: {
-        schoolName: "",
-        fieldOfStudy: "",
-        fromDate: "",
-        toDate: "",
-      },
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
-
-  handleInputChange = (e) => {
-    this.setState((prevState) => ({
-      educationalExperience: {
-        ...prevState.educationalExperience,
-        [e.target.name]: e.target.value,
-      },
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
-  handleSave = (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
-    this.setState({ isEditing: false });
+
+    setState((prevState) => ({
+      ...prevState,
+      isEditing: false,
+    }));
   };
 
-  handleEdit = (e) => {
+  const handleEdit = (e) => {
     e.preventDefault();
-    this.setState({ isEditing: true });
+    setState((prevState) => ({
+      ...prevState,
+      isEditing: true,
+    }));
   };
 
-  render() {
-    const educationalExperience = this.state.educationalExperience;
-    const isEditing = this.state.isEditing;
-
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          {isEditing ? (
-            <form>
-              <div>
-                <label>
-                  School Name:
-                  <input
-                    name="schoolName"
-                    type="text"
-                    placeholder="School name"
-                    value={educationalExperience.schoolName}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Field of Study:
-                  <input
-                    name="fieldOfStudy"
-                    type="text"
-                    placeholder="Field of Study"
-                    value={educationalExperience.fieldOfStudy}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  From Date:
-                  <input
-                    name="fromDate"
-                    type="text"
-                    placeholder="From Date"
-                    value={educationalExperience.fromDate}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  To Date:
-                  <input
-                    name="toDate"
-                    type="text"
-                    placeholder="To Date:"
-                    value={educationalExperience.toDate}
-                    onChange={this.handleInputChange}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <input
-                  type="button"
-                  value="Save"
-                  className="experienceButton"
-                  onClick={this.handleSave}
-                />
-              </div>
-            </form>
-          ) : (
+        {state.isEditing ? (
+          <form>
             <div>
-              <p>School Name: {educationalExperience.schoolName}</p>
-              <p>Field of Study: {educationalExperience.fieldOfStudy}</p>
-              <p>From Date: {educationalExperience.fromDate}</p>
-              <p>To Date: {educationalExperience.toDate}</p>
-              <div>
+              <label>
+                School Name:
                 <input
-                  type="button"
-                  value="Edit"
-                  className="experienceButton"
-                  onClick={this.handleEdit}
+                  name="schoolName"
+                  type="text"
+                  placeholder="School name"
+                  value={state.schoolName}
+                  onChange={handleInputChange}
                 />
-              </div>
+              </label>
             </div>
-          )}
-        </div>
+
+            <div>
+              <label>
+                Field of Study:
+                <input
+                  name="fieldOfStudy"
+                  type="text"
+                  placeholder="Field of Study"
+                  value={state.fieldOfStudy}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                From Date:
+                <input
+                  name="fromDate"
+                  type="text"
+                  placeholder="From Date"
+                  value={state.fromDate}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                To Date:
+                <input
+                  name="toDate"
+                  type="text"
+                  placeholder="To Date:"
+                  value={state.toDate}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+
+            <div>
+              <input
+                type="button"
+                value="Save"
+                className="experienceButton"
+                onClick={handleSave}
+              />
+            </div>
+          </form>
+        ) : (
+          <div>
+            <p>School Name: {state.schoolName}</p>
+            <p>Field of Study: {state.fieldOfStudy}</p>
+            <p>From Date: {state.fromDate}</p>
+            <p>To Date: {state.toDate}</p>
+            <div>
+              <input
+                type="button"
+                value="Edit"
+                className="experienceButton"
+                onClick={handleEdit}
+              />
+            </div>
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default EducationalExperience;

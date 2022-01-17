@@ -1,65 +1,59 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 import JobExperienceComponent from "./JobExperienceComponent";
 
-class JobExperiences extends Component {
-  constructor(props) {
-    super(props);
+function JobExperiences() {
+  const [state, setState] = useState({
+    jobExperiences: [],
+    experience: { id: uniqid() },
+  });
 
-    this.state = {
-      jobExperiences: [],
-      experience: { id: uniqid() },
-    };
-  }
-
-  handleAdd = (e) => {
+  const handleAdd = (e) => {
     e.preventDefault();
 
-    this.setState({
-      jobExperiences: this.state.jobExperiences.concat(this.state.experience),
+    setState({
+      jobExperiences: state.jobExperiences.concat(state.experience),
       experience: { id: uniqid() },
     });
   };
 
-  handleDelete(experience) {
-    this.setState((prevState) => ({
+  const handleDelete = (experience) => {
+    setState((prevState) => ({
       jobExperiences: prevState.jobExperiences.filter(
         (el) => el !== experience
       ),
     }));
-  }
+  };
 
-  render() {
-    const jobExperiences = this.state.jobExperiences;
+  const jobExperiences = state.jobExperiences;
 
-    return (
-      <div className="experiencesDiv">
-        <p className="displayP">Professional Experience</p>
-        <input
-          type="button"
-          value="Add"
-          className="experienceButton"
-          onClick={this.handleAdd}
-        />
+  return (
+    <div className="experiencesDiv">
+      <p className="displayP">Professional Experience</p>
+      <input
+        type="button"
+        value="Add"
+        className="experienceButton"
+        onClick={handleAdd}
+      />
 
-        <ul>
-          {jobExperiences.map((experience) => {
-            return (
-              <li key={experience.id} className="experienceItem">
-                <JobExperienceComponent />
-                <input
-                  type="button"
-                  value="Delete"
-                  className="experienceButton"
-                  onClick={this.handleDelete.bind(this, experience)}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
+      <ul>
+        {jobExperiences.map((experience) => {
+          return (
+            <li key={experience.id} className="experienceItem">
+              <JobExperienceComponent />
+              <input
+                type="button"
+                value="Delete"
+                className="experienceButton"
+                onClick={handleDelete.bind(this, experience)}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default JobExperiences;

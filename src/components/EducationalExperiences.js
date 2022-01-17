@@ -1,67 +1,61 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 import EducationExperienceComponent from "./EducationExperienceComponent";
 
-class EducationalExperiences extends Component {
-  constructor(props) {
-    super(props);
+function EducationalExperiences() {
+  const [state, setState] = useState({
+    educationalExperiences: [],
+    experience: { id: uniqid() },
+  });
 
-    this.state = {
-      educationalExperiences: [],
-      experience: { id: uniqid() },
-    };
-  }
-
-  handleAdd = (e) => {
+  const handleAdd = (e) => {
     e.preventDefault();
 
-    this.setState({
-      educationalExperiences: this.state.educationalExperiences.concat(
-        this.state.experience
+    setState({
+      educationalExperiences: state.educationalExperiences.concat(
+        state.experience
       ),
       experience: { id: uniqid() },
     });
   };
 
-  handleDelete(experience) {
-    this.setState((prevState) => ({
+  const handleDelete = (experience) => {
+    setState((prevState) => ({
       educationalExperiences: prevState.educationalExperiences.filter(
         (el) => el !== experience
       ),
     }));
-  }
+  };
 
-  render() {
-    const educationalExperiences = this.state.educationalExperiences;
+  const educationalExperiences = state.educationalExperiences;
 
-    return (
-      <div className="experiencesDiv">
-        <p className="displayP">Educational Experience</p>
-        <input
-          type="button"
-          value="Add"
-          className="experienceButton"
-          onClick={this.handleAdd}
-        />
+  return (
+    <div className="experiencesDiv">
+      <p className="displayP">Educational Experience</p>
+      <input
+        type="button"
+        value="Add"
+        className="experienceButton"
+        onClick={handleAdd}
+      />
 
-        <ul>
-          {educationalExperiences.map((experience) => {
-            return (
-              <li key={experience.id} className="experienceItem">
-                <EducationExperienceComponent />
-                <input
-                  type="button"
-                  value="Delete"
-                  className="experienceButton"
-                  onClick={this.handleDelete.bind(this, experience)}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
+      <ul>
+        {educationalExperiences.map((experience) => {
+          return (
+            <li key={experience.id} className="experienceItem">
+              <EducationExperienceComponent />
+              <input
+                type="button"
+                value="Delete"
+                className="experienceButton"
+                onClick={handleDelete.bind(this, experience)}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default EducationalExperiences;
